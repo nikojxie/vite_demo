@@ -58,7 +58,5 @@ export default {
       );
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0ff, endColorstr=#fff, GradientType=0);
     }
-
-
   }
 </style>
