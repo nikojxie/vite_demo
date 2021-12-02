@@ -16,7 +16,7 @@ export default defineConfig({
     // 代理
     proxy: {
       '/api': {
-        target: 'https://www.yoursite.com',
+        target: 'https://blog.xiejunyi.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
