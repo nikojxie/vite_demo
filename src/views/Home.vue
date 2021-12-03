@@ -6,6 +6,13 @@
         :article="item"
         :loading="loading"
     ></article-card>
+    <a-pagination
+        v-model:current="page"
+        :total="totalRows"
+        :pageSize="10"
+        show-less-items
+        @change="handlePageChange"
+    />
   </div>
 </template>
 
@@ -18,11 +25,18 @@ export default {
 <script setup>
   import useList from "../composables/article/useList"
   import ArticleCard from "../components/article/article-card.vue";
-  const {list,loading,init} = useList()
+  const {list,loading,page,totalRows,getList} = useList()
+  const handlePageChange = (current) => {
+    page.value = current
+    getList()
+  }
 </script>
 
 <style scoped lang="less">
   .article-list {
-    overflow: auto;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>

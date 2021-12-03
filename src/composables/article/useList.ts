@@ -3,18 +3,22 @@ import {ref, onMounted, watch} from 'vue'
 
 export default function useList() {
     const list = ref([])
+    const page = ref(1)
+    const totalRows = ref(0)
     list.value.length = 10 // 默认给10的长度 骨架屏展示
     list.value.fill({})
     const loading = ref(false)
-    const init = async () => {
+    const getList = async () => {
         loading.value = true
-        list.value = await api.getArticleList()
+        const res = await api.getArticleListPage(page.value)
+        totalRows.value = res.totalRows
+        list.value = res.list
         loading.value = false
     }
-    onMounted(init)
+    onMounted(getList)
     return {
-        list,
+        list,page,totalRows,
         loading,
-        init
+        getList
     }
 }

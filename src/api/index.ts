@@ -1,10 +1,13 @@
 import request from "../utils/request"
 
 const api = {
-    getArticleList() {
+    getArticleListAll() {
         return request(`/api/list/all`)
     },
-    getArticleDetail(id) {
+    getArticleListPage(page: string | number) {
+        return request(`/api/list/page/${page}`)
+    },
+    getArticleDetail(id : string | number) {
         return request(`/api/article/${id}`)
     }
 }
