@@ -1,8 +1,8 @@
 import api from '@/api/index'
-import {reactive, onMounted, watch} from 'vue'
+import {ref, onMounted, watch} from 'vue'
 
 export default function useList() {
-    const list = reactive([])
+    const list = ref([])
     list.value.length = 10 // 默认给10的长度 骨架屏展示
     list.value.fill({})
     const loading = ref(false)
