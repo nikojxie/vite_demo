@@ -1,10 +1,14 @@
 <template>
   <div class="article-card">
-    <h3>{{ article.title }}</h3>
-    <div class="article-card-body">
-      <v-md-preview :text="article.body" class="article-card-body-content"></v-md-preview>
-      <div class="ulBlend"></div>
-    </div>
+    <a-skeleton :loading="loading" active>
+      <div>
+        <router-link :to="`/article/${article.id}`"><h3 class="article-card-title">{{ article.title }}</h3></router-link>
+        <div class="article-card-body">
+          <v-md-preview :text="article.body" class="article-card-body-content"></v-md-preview>
+          <div class="ulBlend"></div>
+        </div>
+      </div>
+    </a-skeleton>
   </div>
 </template>
 
@@ -19,6 +23,10 @@ export default {
     article: {
       type: Object,
       default: () => {}
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   })
 </script>
@@ -30,6 +38,11 @@ export default {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
+
+    .article-card-title{
+      font-size: 20px;
+      font-weight: bold;
+    }
 
     .article-card-body {
       overflow: hidden;

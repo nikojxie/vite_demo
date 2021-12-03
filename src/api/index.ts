@@ -1,8 +1,11 @@
 import request from "../utils/request"
 
 const api = {
-    getList() {
-        return request('/api/content')
+    getArticleList() {
+        return request(`/api/list/all`)
+    },
+    getArticleDetail(id) {
+        return request(`/api/article/${id}`)
     }
 }
 
