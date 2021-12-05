@@ -1,6 +1,11 @@
 <template>
   <div class="app-container">
-    <router-view></router-view>
+    <router-view v-slot="{ Component }" >
+      <keep-alive >
+        <component :is="Component" v-if="$route.meta.keepalive"></component>
+      </keep-alive>
+      <component :is="Component" v-if="!$route.meta.keepalive"></component>
+    </router-view>
   </div>
 </template>
 
@@ -8,6 +13,9 @@
 export default {
   name: "appContainer",
 };
+</script>
+<script setup>
+
 </script>
 
 <style scoped>

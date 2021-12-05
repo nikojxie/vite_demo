@@ -1,9 +1,12 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
+        meta: {
+            keepalive: true
+        },
         component: () => import('@/views/Home.vue')
     },
     {
@@ -16,6 +19,13 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    if (!(to.meta.keepalive)) {
+        window.scrollTo(0, 0)
+    }
+    next();
 })
 
 export default router

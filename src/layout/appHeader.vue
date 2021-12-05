@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <nav class="app-header-container">
-      <h1>Niko's Blog</h1>
+      <router-link to="/"><h1>Niko's Blog</h1></router-link>
     </nav>
   </header>
 </template>
