@@ -15,8 +15,8 @@ export default {
 <style lang="less">
 .app-header {
   .app-header-container {
-    width: 80%;
-    min-width: 800px;
+    width: 100%;
+    padding-left:48px;
     h1 {
       font-size: 20px;
       font-weight: bold;

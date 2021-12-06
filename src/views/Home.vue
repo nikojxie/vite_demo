@@ -7,6 +7,7 @@
         :loading="loading"
     ></article-card>
     <a-pagination
+        class="article-list-pagination"
         v-model:current="page"
         :total="totalRows"
         :pageSize="10"
@@ -27,6 +28,7 @@ export default {
   import ArticleCard from "../components/article/article-card.vue";
   const {list,loading,page,totalRows,getList} = useList()
   const handlePageChange = (current) => {
+    window.scrollTo(0,0)
     page.value = current
     getList()
   }
@@ -38,5 +40,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .article-list-pagination {
+      margin-top: 20px;
+    }
   }
+
 </style>
