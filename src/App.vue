@@ -3,8 +3,8 @@
   <div>
     <app-aside></app-aside>
     <app-container></app-container>
+    <app-footer></app-footer>
   </div>
-  <app-footer></app-footer>
   <app-module></app-module>
 </template>
 

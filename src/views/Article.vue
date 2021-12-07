@@ -1,6 +1,10 @@
 <template>
   <div class="article-detail">
     <a-skeleton :loading="loading" active>
+      <a-breadcrumb separator=">">
+        <a-breadcrumb-item ><router-link to="/">首页</router-link></a-breadcrumb-item>
+        <a-breadcrumb-item class="current-title">{{ detail.title }}</a-breadcrumb-item>
+      </a-breadcrumb>
         <h1 class="detail-title">{{detail.title}}</h1>
         <v-md-preview :text="detail.body"></v-md-preview>
     </a-skeleton>
@@ -23,11 +27,14 @@ export default {
 <style scoped lang="less">
   .article-detail {
     width: 90%;
-    max-width: 1000px;
+    //max-width: 1000px;
     margin: 20px auto;
     .detail-title {
       font-size: 24px;
       font-weight: bold;
+    }
+    .current-title{
+      color: #666;
     }
   }
 

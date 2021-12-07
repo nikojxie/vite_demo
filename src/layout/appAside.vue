@@ -2,7 +2,7 @@
   <div class="app-aside">
     <a-menu
         v-model:openKeys="openKeys"
-        v-model:selectedKeys="selectedKeys"
+        v-bind:selectedKeys="selectedKeys"
         mode="inline"
         :inline-collapsed="collapsed"
         @select="handleMenuSelect"
@@ -11,9 +11,10 @@
           v-for="(menu, index) of menus"
           :key="menu.path"
       >
-        <!--<template #icon>-->
-        <!--  <PieChartOutlined/>-->
-        <!--</template>-->
+        <template #icon>
+          <component :is="menu.icon"></component>
+          <!--<folder-open-outlined />-->
+        </template>
         <span>{{ menu.title }}</span>
       </a-menu-item>
     </a-menu>
@@ -27,7 +28,6 @@ export default {
 </script>
 <script setup>
 import useAsideMenu from "../composables/layout/useAsideMenu";
-
 let {
   collapsed,
   selectedKeys,
@@ -35,8 +35,6 @@ let {
   menus,
   handleMenuSelect
 } = useAsideMenu()
-
-
 </script>
 
 <style scoped></style>

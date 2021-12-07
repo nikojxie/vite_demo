@@ -1,4 +1,4 @@
-import api from '@/api/index'
+import api from '../../api/index'
 import {ref, onMounted} from 'vue'
 
 export default function useDetail(id: string | number) {

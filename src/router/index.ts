@@ -30,7 +30,7 @@ const router = createRouter({
 })
 
 router.afterEach((to, from) => {
-    if (!(to.meta.keepalive)) {
+    if (!to.meta.keepalive) {
         window.scrollTo(0, 0)
     }
 })

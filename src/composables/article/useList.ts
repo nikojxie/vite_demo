@@ -1,8 +1,8 @@
-import api from '@/api/index'
+import api from '../../api/index'
 import {ref, onMounted, watch} from 'vue'
 
 export default function useList() {
-    const list = ref([])
+    const list:{value : any[], [propName : string] : any} = ref([])
     const page = ref(1)
     const totalRows = ref(0)
     list.value.length = 10 // 默认给10的长度 骨架屏展示

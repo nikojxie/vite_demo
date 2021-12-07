@@ -1,18 +1,25 @@
-import { reactive, toRefs, watch, onMounted } from 'vue';
+import { reactive, toRefs, watch, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
+import {
+    FolderOpenOutlined,
+    HomeOutlined
+} from '@ant-design/icons-vue';
 export default function useAsideMenu() {
     const route = useRoute()
     const router = useRouter()
     const state = reactive({
         collapsed: false,
-        selectedKeys: [],
+        // selectedKeys: [],
         openKeys: [],
         preOpenKeys: [],
     });
     const menus = [
-        {title:'首页', path: '/'},
-        {title:'文章归档', path: '/article-file'},
+        {title:'首页', path: '/', icon: HomeOutlined},
+        {title:'文章归档', path: '/article-file', icon: FolderOpenOutlined},
     ]
+    const selectedKeys = computed(() => {
+        return [route.path]
+    })
     watch(
         () => state.openKeys,
         (val, oldVal) => {
@@ -23,19 +30,19 @@ export default function useAsideMenu() {
         state.collapsed = !state.collapsed;
         state.openKeys = state.collapsed ? [] : state.preOpenKeys;
     };
-    const handleMenuSelect = ({ key }) => {
-        // state.selectedKeys = selectedKeys
+    const handleMenuSelect = (obj : { key: string }) => {
         router.push({
-            path:key
+            path:obj.key
         })
     }
 
     onMounted(()=>{
-        state.selectedKeys = [route.path]
+        // state.selectedKeys = [route.path]
     })
 
     return {
         ...toRefs(state),
+        selectedKeys,
         toggleCollapsed,
         handleMenuSelect,
         menus
