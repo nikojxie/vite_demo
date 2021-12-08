@@ -10,6 +10,7 @@
     "@kangc/v-md-editor": "^2.3.12",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.24.0",
+    "dayjs": "^1.10.7",
     "mockjs": "^1.1.0",
     "prismjs": "^1.25.0",
     "vue": "^3.2.16",

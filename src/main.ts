@@ -5,6 +5,7 @@ import router from './router/index'
 import store from './store/index'
 import "ant-design-vue/dist/antd.css";
 import api from "./api/index";
+import dayjs from 'dayjs'
 
 import VueMarkdownEditor from '@kangc/v-md-editor';
 import '@kangc/v-md-editor/lib/style/base-editor.css';
@@ -29,5 +30,10 @@ const app = createApp(App)
 app.use(router).use(store).use(Antd)
 app.use(VueMarkdownEditor)
 app.use(VMdPreview)
-app.config.globalProperties.$api = api // 自定义添加
+app.config.globalProperties.$api = api
+app.config.globalProperties.$dayjs = {
+    format(date,formatter = 'YYYY-MM-DD'){
+        return dayjs(date).format(formatter)
+    }
+}
 app.mount('#app')
