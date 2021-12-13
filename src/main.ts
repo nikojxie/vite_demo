@@ -27,7 +27,7 @@ VMdPreview.use(githubTheme, {
 });
 
 const app = createApp(App)
-app.use(router).use(store).use(Antd)
+app.use(router).use(store)
 app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.config.globalProperties.$api = api

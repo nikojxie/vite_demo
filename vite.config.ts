@@ -1,10 +1,18 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import { viteMockServe } from 'vite-plugin-mock'
+// 按需引入组件
+import Components from 'unplugin-vue-components/vite'
+import {AntDesignVueResolver} from 'unplugin-vue-components/resolvers'
+// 开启gzip
+import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
-  plugins: [vue(),viteMockServe({ supportTs: true, mockPath: 'src/mock' })],
+  plugins: [vue(),viteCompression(),
+    Components({
+      resolvers: [AntDesignVueResolver()],
+      dts: true
+    })],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src') // 设置 `@` 指向 `src` 目录
