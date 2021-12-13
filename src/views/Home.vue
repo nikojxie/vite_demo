@@ -24,25 +24,33 @@ export default {
 }
 </script>
 <script setup>
-  import useList from "../composables/article/useList"
-  import ArticleCard from "../components/article/article-card.vue";
-  const {list,loading,page,totalRows,getList} = useList()
-  const handlePageChange = (current) => {
-    window.scrollTo(0,0)
-    page.value = current
-    getList()
-  }
+import useList from "../composables/article/useList"
+import ArticleCard from "../components/article/article-card.vue";
+
+let {
+  loading,
+  list,
+  page,
+  totalRows,
+  getList
+} = useList()
+const handlePageChange = (current) => {
+  window.scrollTo(0, 0)
+  page = current
+  getList()
+}
 </script>
 
 <style scoped lang="less">
-  .article-list {
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .article-list-pagination {
-      margin-top: 20px;
-    }
+.article-list {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .article-list-pagination {
+    margin-top: 20px;
   }
+}
 
 </style>

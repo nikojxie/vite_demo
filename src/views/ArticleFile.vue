@@ -25,8 +25,11 @@ export default {
 </script>
 <script setup>
 import useFile from "../composables/article/useFile"
-
-const {loading, paragraph, file} = useFile()
+const {
+  loading,
+  paragraph,
+  file
+} = useFile()
 </script>
 
 <style scoped lang="less">

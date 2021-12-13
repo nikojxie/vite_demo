@@ -1,24 +1,26 @@
 import api from '../../api/index'
-import {ref, onMounted, watch} from 'vue'
+import {toRefs, reactive, onMounted} from 'vue'
 
 export default function useList() {
-    const list:{value : any[], [propName : string] : any} = ref([])
-    const page = ref(1)
-    const totalRows = ref(0)
-    list.value.length = 10 // 默认给10的长度 骨架屏展示
-    list.value.fill({})
-    const loading = ref(false)
+    const initList: unknown[] = []
+    initList.length = 10
+    initList.fill({})
+    const articleList = reactive({
+        list: initList,
+        page: 1,
+        totalRows: 0,
+        loading: false,
+    })
     const getList = async () => {
-        loading.value = true
-        const res = await api.getArticleListPage(page.value)
-        totalRows.value = res.totalRows
-        list.value = res.list
-        loading.value = false
+        articleList.loading = true
+        const res = await api.getArticleListPage(articleList.page)
+        articleList.totalRows = res.totalRows
+        articleList.list = res.list
+        articleList.loading = false
     }
     onMounted(getList)
     return {
-        list,page,totalRows,
-        loading,
+        ...toRefs(articleList),
         getList
     }
 }
