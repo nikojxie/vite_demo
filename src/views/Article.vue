@@ -40,6 +40,7 @@ const {
   .detail-title {
     font-size: 24px;
     font-weight: bold;
+    margin: 20px 0;
   }
 
   .current-title {

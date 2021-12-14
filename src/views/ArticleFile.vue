@@ -41,6 +41,7 @@ const {
   .file-date {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px;
   }
 
   .article-cell {

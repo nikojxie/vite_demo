@@ -6,7 +6,8 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'home',
         meta: {
-            keepalive: true
+            keepalive: true,
+            title: '首页'
         },
         component: () => import('@/views/Home.vue')
     },
@@ -14,12 +15,19 @@ const routes: Array<RouteRecordRaw> = [
         // 文章详情
         path: '/article/:id',
         name: 'article-detail',
+        meta: {
+            title: '文章详情'
+        },
         component: () => import('@/views/Article.vue')
     },
     {
         // 文章归档
         path: '/article-file',
         name: 'article-file',
+        meta: {
+            keepalive: true,
+            title: '文章归档'
+        },
         component: () => import('@/views/ArticleFile.vue')
     },
 ]

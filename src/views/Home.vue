@@ -27,7 +27,7 @@ export default {
 import useList from "../composables/article/useList"
 import ArticleCard from "../components/article/article-card.vue";
 
-let {
+const {
   loading,
   list,
   page,
@@ -36,8 +36,7 @@ let {
 } = useList()
 const handlePageChange = (current) => {
   window.scrollTo(0, 0)
-  page = current
-  getList()
+  getList(current)
 }
 </script>
 

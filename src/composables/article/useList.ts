@@ -11,7 +11,8 @@ export default function useList() {
         totalRows: 0,
         loading: false,
     })
-    const getList = async () => {
+    const getList = async (page = 1) => {
+        if(page) articleList.page = page
         articleList.loading = true
         const res = await api.getArticleListPage(articleList.page)
         articleList.totalRows = res.totalRows
