@@ -4,7 +4,7 @@ import { resolve } from 'path'
 // 按需引入组件
 import Components from 'unplugin-vue-components/vite'
 import {AntDesignVueResolver} from 'unplugin-vue-components/resolvers'
-// 开启gzip
+// 打包js css时压缩成gz
 import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({

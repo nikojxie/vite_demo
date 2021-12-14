@@ -45,6 +45,7 @@ const props = defineProps({
   .article-card-title {
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 20px;
     &:hover {
       color: #1890ff;
     }
