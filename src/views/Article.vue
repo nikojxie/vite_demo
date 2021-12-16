@@ -13,17 +13,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "Detail"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import useDetail from "../composables/article/useDetail"
 import {useRoute} from 'vue-router'
 
 const route = useRoute()
-const id = route.params.id
+const id: string = route.params.id
 const {
   detail,
   loading,
