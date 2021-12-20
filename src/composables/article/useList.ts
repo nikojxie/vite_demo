@@ -1,4 +1,4 @@
-import api from '../../api/index'
+import api from '@/api/index'
 import {toRefs, reactive, onMounted} from 'vue'
 
 export default function useList() {
@@ -15,8 +15,8 @@ export default function useList() {
         if(page) articleList.page = page
         articleList.loading = true
         const res = await api.getArticleListPage(articleList.page)
-        articleList.totalRows = res.totalRows
-        articleList.list = res.list
+        articleList.totalRows = res.data.totalRows
+        articleList.list = res.data.list
         articleList.loading = false
     }
     onMounted(getList)

@@ -1,4 +1,4 @@
-import api from '../../api/index'
+import api from '@/api/index'
 import {toRefs, reactive, onMounted} from 'vue'
 
 export default function useList() {
@@ -22,7 +22,8 @@ export default function useList() {
 
     const init = async () => {
         articleFile.loading = true
-        articleFile.file = await api.getArticleFile()
+        const res = await api.getArticleFile()
+        articleFile.file = res.data
         articleFile.loading = false
     }
 

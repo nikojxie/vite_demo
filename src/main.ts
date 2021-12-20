@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 // import Antd from "ant-design-vue";
 import App from './App.vue'
 import router from './router/index'
-import store from './store/index'
 // import "ant-design-vue/dist/antd.css";
 import api from "./api/index";
 import dayjs from 'dayjs'
@@ -27,12 +26,12 @@ VMdPreview.use(githubTheme, {
 });
 
 const app = createApp(App)
-app.use(router).use(store)
+app.use(router)
 // app.use(VueMarkdownEditor)
 app.use(VMdPreview)
 app.config.globalProperties.$api = api
 app.config.globalProperties.$dayjs = {
-    format(date,formatter = 'YYYY-MM-DD'){
+    format(date:string,formatter = 'YYYY-MM-DD'){
         return dayjs(date).format(formatter)
     }
 }

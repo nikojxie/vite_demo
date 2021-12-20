@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import path from 'path';
 // 按需引入组件
 import Components from 'unplugin-vue-components/vite'
 import {AntDesignVueResolver} from 'unplugin-vue-components/resolvers'
@@ -8,15 +8,30 @@ import {AntDesignVueResolver} from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression'
 
 export default defineConfig({
-  plugins: [vue(),viteCompression(),
+  plugins: [
+    vue(),
+    viteCompression(),
     Components({
-      resolvers: [AntDesignVueResolver()],
+      resolvers: [
+          AntDesignVueResolver()
+      ],
       dts: true
-    })],
+    })
+  ],
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        modifyVars: {
+          '@primary-color': '#bfa',
+        },
+      },
+    },
+  },
   resolve: {
-    alias: {
-      '@': resolve(__dirname, 'src') // 设置 `@` 指向 `src` 目录
-    }
+    alias: [
+      { find: /^@\//, replacement: `${path.resolve(__dirname, './src')}/` },
+    ]
   },
   server: {
     port: 3000, // 设置服务启动端口号
