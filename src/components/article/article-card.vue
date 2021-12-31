@@ -47,7 +47,7 @@ const props = defineProps({
     font-weight: bold;
     margin-bottom: 20px;
     &:hover {
-      color: #1890ff;
+      color: #996633;
     }
   }
 

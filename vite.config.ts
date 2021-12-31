@@ -13,7 +13,9 @@ export default defineConfig({
     viteCompression(),
     Components({
       resolvers: [
-          AntDesignVueResolver()
+          AntDesignVueResolver({
+            importLess: true
+          })
       ],
       dts: true
     })
@@ -23,7 +25,7 @@ export default defineConfig({
       less: {
         javascriptEnabled: true,
         modifyVars: {
-          '@primary-color': '#bfa',
+          'primary-color': '#996633'
         },
       },
     },
